@@ -1,0 +1,5 @@
+alias ll="ls -lG"
+alias la="ls -AG"
+alias e="emacs -nw"
+alias se="sudo emacs -nw"
+

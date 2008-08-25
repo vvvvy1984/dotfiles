@@ -1,0 +1,4 @@
+;; load path modifications
+(add-to-list 'load-path "/home/cstejerean/emacs-lisp/")
+(add-to-list 'load-path "/home/cstejerean/emacs-lisp/python-mode/")
+(setq ipython-command "/usr/bin/ipython")
