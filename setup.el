@@ -63,3 +63,11 @@
 ;; ido mode
 (setq ido-enable-flex-matching t)
 (ido-mode t)
+
+;; django html mode
+(require 'django-html-mode)
+
+;; CUDA stuff
+(setq auto-mode-alist (append 
+		       '(("\\.cu$" . c++-mode))
+		       auto-mode-alist))
