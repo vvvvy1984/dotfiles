@@ -6,6 +6,24 @@ function tgrep {
     tfind $1 | xargs egrep -n "$2"
 }
 
+function get_local_vhosts {
+    for vhost in `get_vhosts`; do
+	if [[ $vhost =~ (.*)\.local$ ]]; then
+	    echo ${BASH_REMATCH[1]}
+	fi
+    done
+}
+
+function get_vhosts {
+   path="/etc/apache2/sites-enabled"
+    for file in `ls $path`; do 
+      data=`fgrep -e 'ServerName' $path/$file | awk '{print $2;}'`
+      if [[ -n "$data" ]]; then 
+	  echo "$data"
+      fi
+    done
+}
+
 function git-svn-transplant-to {
     current_branch=`git branch | grep "*" | awk '{print $2}'`
     git checkout $1 && git merge $current_branch && git svn dcommit && git checkout $current_branch
