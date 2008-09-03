@@ -3,7 +3,7 @@ function tfind {
 }
 
 function tgrep {
-    tfind $1 | xargs egrep -n "$2"
+   egrep -R --include="*.$1" "$2" .
 }
 
 function sudo_str {
