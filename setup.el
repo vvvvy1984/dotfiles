@@ -9,6 +9,8 @@
 
 (add-to-list 'load-path (concat shared-profile-home "/emacs-lisp/"))
 (add-to-list 'load-path (concat shared-profile-home "/emacs-lisp/python-mode/"))
+(add-to-list 'load-path (concat shared-profile-home "/emacs-lisp/git/"))
+
 (setq ipython-command (concat home-directory "/bin/ipython"))
 
 ;; Put autosave files (ie #foo#) in one place
@@ -35,6 +37,14 @@
 (make-directory backup-dir t)
 
 (setq backup-directory-alist (list (cons "." backup-dir)))
+
+;; git stuff
+
+(require 'git)
+(add-to-list 'vc-handled-backends 'GIT)
+(autoload 'git-blame-mode "git-blame"
+  
+"Minor mode for incremental blame for Git." t)
 
 ;; python-mode
 (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
