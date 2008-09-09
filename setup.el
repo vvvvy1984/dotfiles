@@ -43,7 +43,7 @@
 (require 'git)
 (add-to-list 'vc-handled-backends 'GIT)
 (autoload 'git-blame-mode "git-blame"
-  
+
 "Minor mode for incremental blame for Git." t)
 
 ;; python-mode
@@ -78,6 +78,16 @@
 (require 'django-html-mode)
 
 ;; CUDA stuff
-(setq auto-mode-alist (append 
+(setq auto-mode-alist (append
 		       '(("\\.cu$" . c++-mode))
 		       auto-mode-alist))
+
+;; show me the time
+(setq display-time-24hr-format t)
+(setq display-time-day-and-date t)
+(display-time)
+
+;; whitespace mode
+(require 'whitespace)
+(setq whitespace-auto-cleanup t)
+(whitespace-global-mode 1)
