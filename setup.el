@@ -43,8 +43,9 @@
 (require 'git)
 (add-to-list 'vc-handled-backends 'GIT)
 (autoload 'git-blame-mode "git-blame"
+  "Minor mode for incremental blame for Git." t)
 
-"Minor mode for incremental blame for Git." t)
+(define-key ctl-x-map "g" 'git-status)
 
 ;; python-mode
 (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
