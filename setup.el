@@ -50,7 +50,7 @@
 ;; python-mode
 (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
 (setq interpreter-mode-alist (cons '("python" . python-mode)
-				   interpreter-mode-alist))
+                                   interpreter-mode-alist))
 
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 
@@ -80,15 +80,16 @@
 
 ;; CUDA stuff
 (setq auto-mode-alist (append
-		       '(("\\.cu$" . c++-mode))
-		       auto-mode-alist))
+                       '(("\\.cu$" . c++-mode))
+                       auto-mode-alist))
 
 ;; show me the time
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 (display-time)
 
-;; whitespace mode
-(require 'whitespace)
-(setq whitespace-auto-cleanup t)
-(whitespace-global-mode 1)
+;; show me whitespace, allow to untabify
+(require 'show-wspace)
+(add-hook 'font-lock-mode-hook 'show-ws-highlight-tabs)
+(add-hook 'font-lock-mode-hook 'show-ws-highlight-trailing-whitespace)
+(define-key ctl-x-map "t" 'untabify)
