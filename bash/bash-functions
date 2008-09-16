@@ -17,10 +17,10 @@ function run_on_change {
     args="$3"
     while [ -1 ]; do
           new_value=`tchecksum $ftype`
-    	  if [[ $new_value != $value ]]; then
-	      command $command $args
-	  fi
-	  value=$new_value
+          if [[ $new_value != $value ]]; then
+              command $command $args
+          fi
+          value=$new_value
     done
 }
 
@@ -30,9 +30,9 @@ function sudo_str {
 
 function get_local_vhosts {
     for vhost in `get_vhosts`; do
-	if [[ $vhost =~ (.*)\.local$ ]]; then
-	    echo ${BASH_REMATCH[1]}
-	fi
+        if [[ $vhost =~ (.*)\.local$ ]]; then
+            echo ${BASH_REMATCH[1]}
+        fi
     done
 }
 
@@ -41,7 +41,7 @@ function get_vhosts {
     for file in `ls $path`; do 
       data=`fgrep -e 'ServerName' $path/$file | awk '{print $2;}'`
       if [[ -n "$data" ]]; then 
-	  echo "$data"
+          echo "$data"
       fi
     done
 }
@@ -65,14 +65,14 @@ function git-svn-create-branch {
     current=`git svn info | grep "URL: " | cut -d ' ' -f 2`
     destination=$svnremote/$branches$1
     if [ "$2" == "-n" ]; then
-	echo " ** Dry run only ** "
-	echo "svn cp $current $destination -m \"creating branch\""
-	echo "git svn fetch"
-	echo "git branch --track svn-$1 $1"
+        echo " ** Dry run only ** "
+        echo "svn cp $current $destination -m \"creating branch\""
+        echo "git svn fetch"
+        echo "git branch --track svn-$1 $1"
     else
-	svn cp $current $destination -m "creating branch"
-	git svn fetch
-	git branch --track svn-$1 $1
+        svn cp $current $destination -m "creating branch"
+        git svn fetch
+        git branch --track svn-$1 $1
     fi
        
     echo "Created branch $1 at $destination (locally svn-$1)"
@@ -86,12 +86,16 @@ function git-svn-prune-branches {
     local_branches=`git branch -r | cut -d ' ' -f 3 | grep -v '^trunk$' | grep -v 'tags/'`
 
     for branch in $local_branches; do
-	if [[ `expr $remote_branches : $branch` > 0 ]] ; then
-	    echo "Found $branch"
-	fi
+        if [[ `expr $remote_branches : $branch` > 0 ]] ; then
+            echo "Found $branch"
+        fi
     done
 
     #echo $local_branches
     #echo "***"
     #echo $remote_branches
+}
+
+function cdl {
+  cd $1 && ls -l
 }
