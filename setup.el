@@ -55,6 +55,16 @@
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 
 ;; ipython mode
+(require 'comint)
+(define-key comint-mode-map [(meta p)]
+  'comint-previous-matching-input-from-input)
+(define-key comint-mode-map [(meta n)]
+  'comint-next-matching-input-from-input)
+(define-key comint-mode-map [(control meta n)]
+   'comint-next-input)
+(define-key comint-mode-map [(control meta p)]
+   'comint-previous-input)
+
 (require 'python-mode)
 (require 'ipython)
 
@@ -93,3 +103,4 @@
 (add-hook 'font-lock-mode-hook 'show-ws-highlight-tabs)
 (add-hook 'font-lock-mode-hook 'show-ws-highlight-trailing-whitespace)
 (define-key ctl-x-map "t" 'untabify)
+(setq-default indent-tabs-mode nil)
