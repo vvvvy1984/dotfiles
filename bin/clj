@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 BREAK_CHARS="(){}[],^%$#@\"\";:''|\\"
-CLOJURE_HOME=~/checkouts/clojure
-CLOJURE_JAR=$CLOJURE_HOME/target/clojure-lang-1.0-SNAPSHOT.jar
 
 if [ -z "$1" ]; then
     rlwrap --remember -c -b $BREAK_CHARS -f $HOME/.clj_completions \

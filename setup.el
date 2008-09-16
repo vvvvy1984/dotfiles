@@ -15,6 +15,8 @@
 (add-to-list 'load-path (concat shared-profile-elisp "swank-clojure/"))
 (add-to-list 'load-path (concat shared-profile-elisp "clojure-mode/"))
 
+(setq swank-clojure-jar-path (getenv "CLOJURE_JAR"))
+
 ;; Put autosave files (ie #foo#) in one place
 (defvar autosave-dir
  (concat "/tmp/emacs_autosaves/" (user-login-name) "/"))
@@ -70,7 +72,6 @@
 ;; clojure stuff
 (require 'clojure-auto)
 (require 'swank-clojure-autoload)
-(setq swank-clojure-jar-path (getenv "CLOJURE_JAR"))
 (require 'slime)
 (slime-setup)
 
