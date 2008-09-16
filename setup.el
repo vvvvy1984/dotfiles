@@ -1,5 +1,6 @@
 (setq home-directory (getenv "HOME"))
 (setq shared-profile-home (getenv "SHARED_PROFILE_HOME"))
+(setq shared-profile-elisp (concat shared-profile-home "/emacs-lisp/"))
 
 (if (string= (substring home-directory -1 nil) "/")
     (setq home-directory (substring home-directory nil -1)))
@@ -7,11 +8,12 @@
 (if (string= (substring shared-profile-home -1 nil) "/")
     (setq shared-profile-home (substring shared-profile-home nil -1)))
 
-(add-to-list 'load-path (concat shared-profile-home "/emacs-lisp/"))
-(add-to-list 'load-path (concat shared-profile-home "/emacs-lisp/python-mode/"))
-(add-to-list 'load-path (concat shared-profile-home "/emacs-lisp/git/"))
-
-(setq ipython-command (concat home-directory "/bin/ipython"))
+(add-to-list 'load-path shared-profile-elisp)
+(add-to-list 'load-path (concat shared-profile-elisp "python-mode/"))
+(add-to-list 'load-path (concat shared-profile-elisp "git/"))
+(add-to-list 'load-path (concat shared-profile-elisp "slime/"))
+(add-to-list 'load-path (concat shared-profile-elisp "swank-clojure/"))
+(add-to-list 'load-path (concat shared-profile-elisp "clojure-mode/"))
 
 ;; Put autosave files (ie #foo#) in one place
 (defvar autosave-dir
@@ -65,6 +67,15 @@
 (define-key comint-mode-map [(control meta p)]
    'comint-previous-input)
 
+;; clojure stuff
+(require 'clojure-auto)
+(require 'swank-clojure-autoload)
+(setq swank-clojure-jar-path (getenv "CLOJURE_JAR"))
+(require 'slime)
+(slime-setup)
+
+;; TODO: make this take advantage of virtual env
+(setq ipython-command (concat home-directory "/bin/ipython"))
 (require 'python-mode)
 (require 'ipython)
 
