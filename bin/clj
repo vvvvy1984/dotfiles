@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+BREAK_CHARS="(){}[],^%$#@\"\";:''|\\"
 CLOJURE_HOME=~/checkouts/clojure
 CLOJURE_JAR=$CLOJURE_HOME/target/clojure-lang-1.0-SNAPSHOT.jar
 
