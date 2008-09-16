@@ -1,3 +1,9 @@
 [submodule "emacs-lisp/slime"]
 	path = emacs-lisp/slime
 	url = git://github.com/nablaone/slime.git
+[submodule "emacs-lisp/clojure-mode"]
+	path = emacs-lisp/clojure-mode
+	url = git://github.com/jochu/clojure-mode.git
+[submodule "emacs-lisp/swank-clojure"]
+	path = emacs-lisp/swank-clojure
+	url = git://github.com/jochu/swank-clojure.git
