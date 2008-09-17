@@ -3,12 +3,18 @@
 BREAK_CHARS="(){}[],^%$#@\"\";:''|\\"
 
 if [ -z "$CLOJURE_CLASSPATH" ]; then
-    CLOJURE_PATH="$SHARED_PROFILE_HOME/lib/jars/"
+    CLOJURE_CLASSPATH="$SHARED_PROFILE_HOME/lib/jars/"
+fi
+
+CLOJURE_PATH="$CLOJURE_JAR:$CLOJURE_CLASSPATH"
+
+if [ -n "$CLOJURE_LIBRARY_PATH" ]; then
+    CLOJURE_LIBRARY_ARG="-Djava.library.path=$CLOJURE_LIBRARY_PATH"
 fi
 
 if [ -z "$1" ]; then
     rlwrap --remember -c -b $BREAK_CHARS -f $HOME/.clj_completions \
-        java -cp $CLOJURE_JAR:$CLOJURE_CLASSPATH clojure.lang.Repl
+        java $CLOJURE_VM_ARGS $CLOJURE_LIBRARY_ARG -cp $CLOJURE_PATH clojure.lang.Repl
 else
-    java -cp $CLOJURE_JAR clojure.lang.Script "$@"
+    java $CLOJURE_VM_ARGS $CLOJURE_LIBRARY_ARG -cp $CLOJURE_PATH clojure.lang.Script "$@"
 fi
