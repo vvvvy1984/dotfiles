@@ -12,10 +12,6 @@
 (add-to-list 'load-path (concat shared-profile-elisp "python-mode/"))
 (add-to-list 'load-path (concat shared-profile-elisp "git/"))
 (add-to-list 'load-path (concat shared-profile-elisp "slime/"))
-(add-to-list 'load-path (concat shared-profile-elisp "swank-clojure/"))
-(add-to-list 'load-path (concat shared-profile-elisp "clojure-mode/"))
-
-(setq swank-clojure-jar-path (getenv "CLOJURE_JAR"))
 
 ;; Put autosave files (ie #foo#) in one place
 (defvar autosave-dir
@@ -42,23 +38,7 @@
 
 (setq backup-directory-alist (list (cons "." backup-dir)))
 
-;; git stuff
-
-(require 'git)
-(add-to-list 'vc-handled-backends 'GIT)
-(autoload 'git-blame-mode "git-blame"
-  "Minor mode for incremental blame for Git." t)
-
-(define-key ctl-x-map "g" 'git-status)
-
-;; python-mode
-(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
-(setq interpreter-mode-alist (cons '("python" . python-mode)
-                                   interpreter-mode-alist))
-
-(autoload 'python-mode "python-mode" "Python editing mode." t)
-
-;; ipython mode
+;; make comint act more like ipython shell
 (require 'comint)
 (define-key comint-mode-map [(meta p)]
   'comint-previous-matching-input-from-input)
@@ -69,16 +49,28 @@
 (define-key comint-mode-map [(control meta p)]
    'comint-previous-input)
 
-;; clojure stuff
-(require 'clojure-auto)
-(require 'swank-clojure-autoload)
-(require 'slime)
-(slime-setup)
 
-;; TODO: make this take advantage of virtual env
-(setq ipython-command (concat home-directory "/bin/ipython"))
-(require 'python-mode)
+;; git stuff
+(require 'git)
+(add-to-list 'vc-handled-backends 'GIT)
+(autoload 'git-blame-mode "git-blame"
+  "Minor mode for incremental blame for Git." t)
+
+(define-key ctl-x-map "g" 'git-status)
+
+;; ipython
 (require 'ipython)
+
+;; clojure stuff
+(if (getenv "CLOJURE_JAR")
+    (progn
+      (add-to-list 'load-path (concat shared-profile-elisp "swank-clojure/"))
+      (add-to-list 'load-path (concat shared-profile-elisp "clojure-mode/"))
+      (setq swank-clojure-jar-path (getenv "CLOJURE_JAR"))
+      (require 'clojure-auto)
+      (require 'swank-clojure-autoload)
+      (require 'slime)
+      (slime-setup)))
 
 ;; css mode
 (autoload 'css-mode "css-mode")
