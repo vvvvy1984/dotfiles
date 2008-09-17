@@ -67,6 +67,8 @@
       (add-to-list 'load-path (concat shared-profile-elisp "swank-clojure/"))
       (add-to-list 'load-path (concat shared-profile-elisp "clojure-mode/"))
       (setq swank-clojure-jar-path (getenv "CLOJURE_JAR"))
+      (if (getenv "CLOJURE_CLASSPATH")
+          (setq swank-clojure-extra-classpaths (list (getenv "CLOJURE_CLASSPATH"))))
       (require 'clojure-auto)
       (require 'swank-clojure-autoload)
       (require 'slime)

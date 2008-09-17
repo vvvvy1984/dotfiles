@@ -2,9 +2,13 @@
 
 BREAK_CHARS="(){}[],^%$#@\"\";:''|\\"
 
+if [ -z "$CLOJURE_CLASSPATH" ]; then
+    CLOJURE_PATH="$SHARED_PROFILE_HOME/lib/jars/"
+fi
+
 if [ -z "$1" ]; then
     rlwrap --remember -c -b $BREAK_CHARS -f $HOME/.clj_completions \
-        java -cp $CLOJURE_JAR clojure.lang.Repl
+        java -cp $CLOJURE_JAR:$CLOJURE_CLASSPATH clojure.lang.Repl
 else
     java -cp $CLOJURE_JAR clojure.lang.Script "$@"
 fi
