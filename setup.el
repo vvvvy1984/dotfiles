@@ -78,6 +78,9 @@
       (require 'slime)
       (slime-setup)))
 
+;; paren mode
+(show-paren-mode 1)
+
 ;; css mode
 (autoload 'css-mode "css-mode")
 (setq auto-mode-alist (cons '("\\.css$" . css-mode) auto-mode-alist))
@@ -110,7 +113,7 @@
 
 ;; show me whitespace, allow to untabify
 (require 'show-wspace)
-(add-hook 'font-lock-mode-hook 'show-ws-highlight-tabs)
-(add-hook 'font-lock-mode-hook 'show-ws-highlight-trailing-whitespace)
+(add-hook 'python-mode-hook 'show-ws-highlight-tabs)
+(add-hook 'python-mode-hook 'show-ws-highlight-trailing-whitespace)
 (define-key ctl-x-map "t" 'untabify)
 (setq-default indent-tabs-mode nil)

@@ -182,7 +182,7 @@ Don't forget to mention your Emacs and library versions."))
 ;;;###autoload
 (defun show-ws-toggle-show-hard-spaces ()
   "Toggle highlighting of non-breaking space characters (`\240').
-Uses face `show-ws-hard-space'."
+vUses face `show-ws-hard-space'."
   (interactive)
   (if show-ws-highlight-hard-spaces-p
       (remove-hook 'font-lock-mode-hook 'show-ws-highlight-hard-spaces)
@@ -218,7 +218,7 @@ Uses face `show-ws-trailing-whitespace'."
 (defun show-ws-highlight-trailing-whitespace ()
   "Highlight whitespace characters at line ends."
   (font-lock-add-keywords
-   nil '(("[\240\040\t]+$" (0 'show-ws-trailing-whitespace t)))))
+   nil '(("[^[:space:]]+[\240\040\t]+$" (0 'show-ws-trailing-whitespace t)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 
