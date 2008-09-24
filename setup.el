@@ -70,7 +70,7 @@
       (if (getenv "CLOJURE_CLASSPATH")
           (setq swank-clojure-extra-classpaths (list (getenv "CLOJURE_CLASSPATH"))))
       (if (getenv "CLOJURE_LIBRARY_PATH")
-          (setq swank-clojure-library-paths (list (genenv "CLOJURE_LIBRARY_PATH"))))
+          (setq swank-clojure-library-paths (list (getenv "CLOJURE_LIBRARY_PATH"))))
       (if (getenv "CLOJURE_VM_ARGS")
           (setq swank-clojure-extra-vm-args (split-string (getenv "CLOJURE_VM_ARGS") " ")))
       (require 'clojure-auto)
