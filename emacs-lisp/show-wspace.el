@@ -218,7 +218,7 @@ Uses face `show-ws-trailing-whitespace'."
 (defun show-ws-highlight-trailing-whitespace ()
   "Highlight whitespace characters at line ends."
   (font-lock-add-keywords
-   nil '(("[^[:space:]]+[\240\040\t]+$" (0 'show-ws-trailing-whitespace t)))))
+   nil '(("[\240\040\t]+$" (0 'show-ws-trailing-whitespace t)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 
