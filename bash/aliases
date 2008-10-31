@@ -1,5 +1,5 @@
 alias ll="ls -lGh"
 alias la="ls -AGh"
 alias e="emacs -nw"
-alias se="sudo -E emacs -nw"
+alias se="sudo -H emacs -nw"
 
