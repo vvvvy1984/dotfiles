@@ -62,9 +62,9 @@ function git-svn-transplant-to {
 function git-svn-remove-branch {
     svnremote=`git config --list | grep "svn-remote.svn.url" | cut -d '=' -f 2`
     if [ "$2" == "-f" ]; then
-        svn rm $svnremote/$1 -m "Removing branch $1"
+        svn rm "$svnremote/branches/$1" -m "Removing branch $1"
     else
-        echo "Would remove branch $svnremote/$1"
+        echo "Would remove branch $svnremote/branches/$1"
     fi
 }
 
