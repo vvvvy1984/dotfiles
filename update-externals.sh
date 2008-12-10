@@ -2,7 +2,7 @@
 
 pull_master() {
     git checkout master
-    git pull origin master
+    git pull origin
 }
 
 cd src/clojure
