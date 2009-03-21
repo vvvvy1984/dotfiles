@@ -3,7 +3,7 @@
 OS="`uname`"
 INSTALL_LOCATION="`pwd`"
 
-if [[$OS = "Darwin"]]; then
+if [[ $OS = "Darwin" ]]; then
     BASHRC="~/.profile"
     defaults write ~/.MacOSX/environment SHARED_PROFILE_HOME $INSTALL_LOCATION
     echo "Added SHARED_PROFILE_HOME to ~/.MacOSX/environment"
