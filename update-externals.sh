@@ -34,6 +34,7 @@ pull_master
 cd ../..
 
 cd gitext
+pull_master
 ./update-externals.sh
 cd ..
 
