@@ -5,5 +5,5 @@ ant clean jar
 cd ../..
 
 cd src/clojure-contrib
-ant clean jar
+ant -Dclojure.jar=src/clojure/clojure.jar clean jar
 cd ../..
