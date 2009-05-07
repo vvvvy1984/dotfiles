@@ -1,7 +1,5 @@
-alias ll="ls -lGh"
-alias la="ls -AGh"
+alias ll="ls -lh"
+alias la="ls -Ah"
 alias e="emacs -nw"
 alias ec="emacsclient"
 alias se="sudo -H emacs -nw"
-
-
