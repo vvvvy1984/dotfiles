@@ -75,7 +75,7 @@
           (setq swank-clojure-extra-vm-args (split-string (getenv "CLOJURE_VM_ARGS") " ")))
       (require 'swank-clojure-autoload)
       (require 'slime)
-      (slime-setup)))
+      (slime-setup '(slime-repl))))
 
 ;; paren mode
 (show-paren-mode 1)
