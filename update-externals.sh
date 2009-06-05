@@ -33,11 +33,6 @@ cd emacs-lisp/clojure-mode
 pull_master
 cd ../..
 
-cd gitext
-pull_master
-./update-externals.sh
-cd ..
-
 if [[ $CLOJURE_CHANGES > 0 && $RECOMPILE_CLOJURE_ON_CHANGE = 'true' ]]; then
     ./compile-clojure.sh
 fi
