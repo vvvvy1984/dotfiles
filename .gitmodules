@@ -1,18 +1,6 @@
 [submodule "emacs-lisp/slime"]
 	path = emacs-lisp/slime
 	url = git://github.com/nablaone/slime.git
-[submodule "emacs-lisp/clojure-mode"]
-	path = emacs-lisp/clojure-mode
-	url = git://github.com/jochu/clojure-mode.git
-[submodule "emacs-lisp/swank-clojure"]
-	path = emacs-lisp/swank-clojure
-	url = git://github.com/jochu/swank-clojure.git
-[submodule "src/clojure"]
-	path = src/clojure
-	url = git://github.com/kevinoneill/clojure.git
-[submodule "src/clojure-contrib"]
-	path = src/clojure-contrib
-	url = git://github.com/kevinoneill/clojure-contrib.git
 [submodule "cljenv"]
 	path = cljenv
 	url = git://github.com/offbytwo/cljenv.git
