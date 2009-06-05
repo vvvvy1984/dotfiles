@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-clj $SHARED_PROFILE_HOME/lib/clj/completions.clj
-
