@@ -35,6 +35,7 @@ cd ../..
 
 cd cljenv
 pull_master
+./update-externals.sh
 cd ..
 
 if [[ $CLOJURE_CHANGES > 0 && $RECOMPILE_CLOJURE_ON_CHANGE = 'true' ]]; then

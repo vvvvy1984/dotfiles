@@ -62,17 +62,8 @@
 (require 'ipython)
 
 ;; clojure stuff
-(if (getenv "CLOJURE_JAR")
-    (progn
-      (add-to-list 'load-path (concat shared-profile-elisp "swank-clojure/"))
-      (add-to-list 'load-path (concat shared-profile-elisp "clojure-mode/"))
-
-      (setq swank-clojure-binary "clj")
-
-      (require 'clojure-mode)
-      (require 'swank-clojure-autoload)
-      (require 'slime)
-      (slime-setup '(slime-repl))))
+(add-to-list 'load-path (concat shared-profile-home "/" "cljenv/emacs/"))
+(require 'cljenv-autoload)
 
 ;; paren mode
 (show-paren-mode 1)

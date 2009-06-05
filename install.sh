@@ -19,13 +19,11 @@ echo "Added Shared Profile setup.sh to Bash"
 echo '(load (concat (getenv "SHARED_PROFILE_HOME") "/" "setup.el"))' >> ~/.emacs
 echo "Added Shared Profile setup.el to Emacs"
 
-git submodule init
-git submodule update
+git submodule update --init
 
 CWD=`pwd`
-cd gitext
-git submodule init
-git submodule update
+cd cljenv
+git submodule update --init
 cd $CWD
 
 echo "Initialized all the externals"
