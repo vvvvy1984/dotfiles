@@ -25,14 +25,6 @@ cd emacs-lisp/slime
 pull_master
 cd ../..
 
-cd emacs-lisp/swank-clojure
-pull_master
-cd ../..
-
-cd emacs-lisp/clojure-mode
-pull_master
-cd ../..
-
 cd cljenv
 pull_master
 ./update-externals.sh
