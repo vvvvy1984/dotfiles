@@ -66,13 +66,10 @@
     (progn
       (add-to-list 'load-path (concat shared-profile-elisp "swank-clojure/"))
       (add-to-list 'load-path (concat shared-profile-elisp "clojure-mode/"))
-      (setq swank-clojure-jar-path (getenv "CLOJURE_JAR"))
-      (if (getenv "CLOJURE_CLASSPATH")
-          (setq swank-clojure-extra-classpaths (list (getenv "CLOJURE_CLASSPATH"))))
-      (if (getenv "CLOJURE_LIBRARY_PATH")
-          (setq swank-clojure-library-paths (list (getenv "CLOJURE_LIBRARY_PATH"))))
-      (if (getenv "CLOJURE_VM_ARGS")
-          (setq swank-clojure-extra-vm-args (split-string (getenv "CLOJURE_VM_ARGS") " ")))
+
+      (setq swank-clojure-binary "clj")
+
+      (require 'clojure-mode)
       (require 'swank-clojure-autoload)
       (require 'slime)
       (slime-setup '(slime-repl))))

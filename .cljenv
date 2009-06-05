@@ -1,0 +1,7 @@
+CLOJURE_JAR="$SHARED_PROFILE_HOME/src/clojure/clojure.jar"
+CLOJURE_CONTRIB_JAR="$SHARED_PROFILE_HOME/src/clojure-contrib/clojure-contrib.jar" # path to clojure-contrib.jar
+CLOJURE_CLASSPATH="" # classpath to launch clojure with
+
+CLOJURE_JAVA_PATH="java" # path to java executable to use
+CLOJURE_VM_ARGS="" # virtual machine arguments when starting JVM
+CLOJURE_NATIVE_LIBRARY_PATH="" # path to native libraries for JVM
