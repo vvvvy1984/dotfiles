@@ -13,14 +13,6 @@ pull_master() {
     git pull origin | grep 'Already up-to-date.'
 }
 
-cd src/clojure
-pull_master || CLOJURE_CHANGES=1
-cd ../..
-
-cd src/clojure-contrib
-pull_master || CLOJURE_CHANGES=1
-cd ../..
-
 cd emacs-lisp/slime
 pull_master
 cd ../..
