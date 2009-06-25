@@ -102,10 +102,21 @@
 (setq auto-mode-alist (cons '("\\.css$" . css-mode) auto-mode-alist))
 
 ;; js2 mode
-(autoload 'js2-mode "js2")
-(setq auto-mode-alist (cons '("\\.js$" . js2-mode) auto-mode-alist))
+;; (autoload 'js2-mode "js2")
+;; (setq auto-mode-alist (cons '("\\.js$" . js2-mode) auto-mode-alist))
+
+;; espresso mode and mozrepl
+(autoload #'espresso-mode "espresso" "Start espresso-mode" t)
+(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . espresso-mode))
+
+(autoload 'moz-minor-mode "moz" "Mozilla Minor and Inferior Mozilla Modes" t)
+(add-hook 'espresso-mode-hook 'espresso-custom-setup)
+(defun espresso-custom-setup ()
+  (moz-minor-mode 1))
 
 (put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 
 ;; show column number
 (setq column-number-mode t)
