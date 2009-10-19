@@ -1,3 +1,5 @@
+(set-language-environment "UTF-8")
+
 (setq home-directory (getenv "HOME"))
 (setq shared-profile-home (getenv "SHARED_PROFILE_HOME"))
 (setq shared-profile-elisp (concat shared-profile-home "/emacs-lisp/"))
@@ -64,6 +66,7 @@
 ;; clojure stuff
 (add-to-list 'load-path (concat shared-profile-home "/" "cljenv/emacs/"))
 (require 'cljenv-autoload)
+(setq slime-net-coding-system 'utf-8-unix)
 
 ;; paren mode
 (show-paren-mode 1)
