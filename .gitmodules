@@ -1,6 +1,0 @@
-[submodule "emacs-lisp/slime"]
-	path = emacs-lisp/slime
-	url = git://github.com/nablaone/slime.git
-[submodule "cljenv"]
-	path = cljenv
-	url = git://github.com/offbytwo/cljenv.git
