@@ -63,11 +63,6 @@
 ;; ipython
 (require 'ipython)
 
-;; clojure stuff
-(add-to-list 'load-path (concat shared-profile-home "/" "cljenv/emacs/"))
-(require 'cljenv-autoload)
-(setq slime-net-coding-system 'utf-8-unix)
-
 ;; paren mode
 (show-paren-mode 1)
 
