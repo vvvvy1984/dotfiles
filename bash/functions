@@ -39,3 +39,14 @@ function get_ip_address {
 function cdl {
   cd $1 && ls -l
 }
+
+function git_update_externals {
+    # should use git submodule foreach
+    git submodule update --init
+    EXTERNALS=`cat .gitmodules | grep path | awk '{print $3}'`
+    for path in $EXTERNALS; do
+        cd $path
+        git pull origin master
+        cd -
+    done
+}
