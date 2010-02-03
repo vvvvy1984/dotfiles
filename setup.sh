@@ -6,6 +6,3 @@ source $SHARED_PROFILE_HOME/bash/git-completion.bash
 source $SHARED_PROFILE_HOME/bash/env
 source $SHARED_PROFILE_HOME/bash/aliases
 source $SHARED_PROFILE_HOME/bash/functions
-
-source $SHARED_PROFILE_HOME/cljenv/bin/source
-cljenv_autostart NOPS1
