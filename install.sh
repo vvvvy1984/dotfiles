@@ -18,13 +18,3 @@ echo "Added Shared Profile setup.sh to Bash"
 
 echo '(load (concat (getenv "SHARED_PROFILE_HOME") "/" "setup.el"))' >> ~/.emacs
 echo "Added Shared Profile setup.el to Emacs"
-
-git submodule update --init
-
-CWD=`pwd`
-cd cljenv
-git submodule update --init
-cd $CWD
-
-echo "Initialized all the externals"
-touch ~/.clj_completions # this file must exist or bad things happen
