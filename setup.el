@@ -67,7 +67,6 @@
 (show-paren-mode 1)
 
 ;; objective-c stuff
-
 (setq auto-mode-alist
       (cons '("\\.m$" . objc-mode) auto-mode-alist))
 (setq auto-mode-alist
@@ -100,18 +99,18 @@
 (setq auto-mode-alist (cons '("\\.css$" . css-mode) auto-mode-alist))
 
 ;; js2 mode
-;; (autoload 'js2-mode "js2")
-;; (setq auto-mode-alist (cons '("\\.js$" . js2-mode) auto-mode-alist))
+(autoload 'js2-mode "js2")
+(setq auto-mode-alist (cons '("\\.js$" . js2-mode) auto-mode-alist))
 
 ;; espresso mode and mozrepl
-(autoload #'espresso-mode "espresso" "Start espresso-mode" t)
-(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . espresso-mode))
+;(autoload #'espresso-mode "espresso" "Start espresso-mode" t)
+;(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
+;(add-to-list 'auto-mode-alist '("\\.json$" . espresso-mode))
 
-(autoload 'moz-minor-mode "moz" "Mozilla Minor and Inferior Mozilla Modes" t)
-(add-hook 'espresso-mode-hook 'espresso-custom-setup)
-(defun espresso-custom-setup ()
-  (moz-minor-mode 1))
+;(autoload 'moz-minor-mode "moz" "Mozilla Minor and Inferior Mozilla Modes" t)
+;(add-hook 'espresso-mode-hook 'espresso-custom-setup)
+;(defun espresso-custom-setup ()
+;  (moz-minor-mode 1))
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -144,7 +143,6 @@
 (setq-default indent-tabs-mode nil)
 
 ;; tab indent or expand
-
 (defun indent-or-expand (arg)
   "Either indent according to mode, or expand the word preceding
 point."
@@ -159,7 +157,17 @@ point."
   (local-set-key [tab] 'indent-or-expand))
  
 ;; add hooks for modes you want to use the tab completion for:
-(add-hook 'python-mode-hook          'my-tab-fix)
+(add-hook 'python-mode-hook     'my-tab-fix)
 (add-hook 'sh-mode-hook         'my-tab-fix)
 (add-hook 'emacs-lisp-mode-hook 'my-tab-fix)
 (add-hook 'clojure-mode-hook    'my-tab-fix)
+
+;; Org Mode
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+
+;; log4j mode
+(autoload 'log4j-mode "log4j-mode" "Major mode for viewing log files." t)
+(add-to-list 'auto-mode-alist '("\\.log\\'" . log4j-mode))
