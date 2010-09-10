@@ -1,19 +1,13 @@
 (set-language-environment "UTF-8")
 
-(setq home-directory (getenv "HOME"))
-(setq shared-profile-home (getenv "SHARED_PROFILE_HOME"))
-(setq shared-profile-elisp (concat shared-profile-home "/emacs-lisp/"))
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
 
-(if (string= (substring home-directory -1 nil) "/")
-    (setq home-directory (substring home-directory nil -1)))
+(require 'cedet)
 
-(if (string= (substring shared-profile-home -1 nil) "/")
-    (setq shared-profile-home (substring shared-profile-home nil -1)))
-
-(add-to-list 'load-path shared-profile-elisp)
-(add-to-list 'load-path (concat shared-profile-elisp "python-mode/"))
-(add-to-list 'load-path (concat shared-profile-elisp "git/"))
-(add-to-list 'load-path (concat shared-profile-elisp "slime/"))
+(add-to-list 'load-path "~/.emacs.d/python-mode/")
 
 ;; Put autosave files (ie #foo#) in one place
 (defvar autosave-dir
@@ -51,14 +45,6 @@
 (define-key comint-mode-map [(control meta p)]
    'comint-previous-input)
 
-
-;; git stuff
-(require 'git)
-(add-to-list 'vc-handled-backends 'GIT)
-(autoload 'git-blame-mode "git-blame"
-  "Minor mode for incremental blame for Git." t)
-
-(define-key ctl-x-map "g" 'git-status)
 
 ;; ipython
 (require 'ipython)
@@ -121,6 +107,9 @@
 ;; ido mode
 (setq ido-enable-flex-matching t)
 (ido-mode t)
+
+;; paredit mode
+(paredit-mode t)
 
 ;; django html mode
 (require 'django-html-mode)
