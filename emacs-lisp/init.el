@@ -7,7 +7,7 @@
 
 (require 'cedet)
 
-(add-to-list 'load-path "~/.emacs.d/python-mode/")
+(add-to-list 'load-path "~/.emacs.d/")
 
 ;; Put autosave files (ie #foo#) in one place
 (defvar autosave-dir
@@ -33,21 +33,6 @@
 (make-directory backup-dir t)
 
 (setq backup-directory-alist (list (cons "." backup-dir)))
-
-;; make comint act more like ipython shell
-(require 'comint)
-(define-key comint-mode-map [(meta p)]
-  'comint-previous-matching-input-from-input)
-(define-key comint-mode-map [(meta n)]
-  'comint-next-matching-input-from-input)
-(define-key comint-mode-map [(control meta n)]
-   'comint-next-input)
-(define-key comint-mode-map [(control meta p)]
-   'comint-previous-input)
-
-
-;; ipython
-(require 'ipython)
 
 ;; paren mode
 (show-paren-mode 1)
