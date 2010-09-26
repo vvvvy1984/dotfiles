@@ -1,0 +1,17 @@
+Config { font = "xft:Sans-9:bold"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = Bottom
+       , lowerOnStart = False
+       , commands = [ Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run CoreTemp ["-t","CPU: <core0>|<core1>|<core2>|<core3>","-L","40","-H","60","-l","lightblue","-n","gray90","-h","red"] 50
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Date "%H:%M:%S" "date" 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %StdinReader% }{ %cpu% | %memory% * %swap% | %eth0% }{ %coretemp% | GPU: <fc=#ffffff>%gputemp%</fc> | HDD: <fc=#ffffff>%myhddtemp%</fc> }{ <fc=#ee9a00>%date%</fc> }"
+      } 

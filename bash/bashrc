@@ -1,0 +1,34 @@
+[ -z "$PS1" ] && return
+
+resolve_symlink () {
+    file="$1"
+    while [ -h "$file" ]; do
+        ls=`ls -ld "$file"`
+        link=`expr "$ls" : '^.*-> \(.*\)$' 2>/dev/null`
+        if expr "$link" : '^/' 2> /dev/null >/dev/null; then
+            file="$link"
+        else
+            file=`dirname "$1"`"/$link"
+        fi
+    done
+    echo "$file"
+}
+
+absolutize_path () {
+    oldpwd=`pwd`
+    cd "$1"
+    abspath=`pwd`
+    cd "${oldpwd}"
+    echo "$abspath"
+}
+
+HERE=$(absolutize_path $(dirname $(resolve_symlink "$BASH_SOURCE")))
+
+. $HERE/git-completion.bash
+. $HERE/env.sh
+. $HERE/aliases.sh
+. $HERE/functions.sh
+
+if [ -f ~/.bashrc.local ]; then 
+    . ~/.bashrc.local
+fi
