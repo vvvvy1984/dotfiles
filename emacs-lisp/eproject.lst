@@ -3,7 +3,7 @@
 (setq prj-version nil)
 
 (setq prj-list
-      '(("eproject" "/Users/cosmin/.emacs.d/elpa/eproject-0.4")))
+      '(("eproject" "/home/cosmin/.emacs.d/elpa/eproject-0.4")))
 
 (setq prj-last-open nil)
 

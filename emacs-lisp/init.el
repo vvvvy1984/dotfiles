@@ -5,8 +5,6 @@
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
-(require 'cedet)
-
 (add-to-list 'load-path "~/.emacs.d/")
 
 ;; Put autosave files (ie #foo#) in one place
