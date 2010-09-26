@@ -1,0 +1,72 @@
+require("session.js");
+session_auto_save_auto_load = true;
+
+require("clicks-in-new-buffer.js");
+clicks_in_new_buffer_target = OPEN_NEW_WINDOW;
+
+url_completion_use_history = true;
+url_completion_use_bookmarks = false;
+can_kill_last_buffer = false;
+download_buffer_automatic_open_target = OPEN_NEW_BUFFER_BACKGROUND;
+define_key(content_buffer_normal_keymap, "C-x C-c", "confirm-quit");
+editor_shell_command = 'emacsclient';
+
+// gmail
+require("page-modes/gmail.js");
+define_key(gmail_keymap, "`", null, $fallthrough);
+define_key(gmail_keymap, "z", null, $fallthrough);
+
+add_webjump("github", "https://github.com/%s");
+add_webjump("twitter", "https://twitter.com/%s");
+
+interactive("instapaper", "Add current page to instapaper",
+            function(I) {
+                var d = I.buffer.document;
+                var z = d.createElement ('scr'+'ipt');
+                var b = d.body;
+                var l = d.location;
+                var e = encodeURIComponent;
+                var f = l.protocol + '//www.instapaper.com/j/WHsktg2SVhtY';
+                var p = '?u='+e(l.href)+'&t='+(new Date().getTime ());
+                var u = f+p;
+                try {
+                    if (!b) {
+                        throw (0);
+                    }
+                    d.title='(Saving...) '+d.title;
+                    z.setAttribute('src',u);
+                    b.appendChild(z);
+                } catch (e) {
+                    alert('Please wait until the page has loaded.');
+                }
+            });
+
+// from _why
+// This one enables Ctrl-Up and Ctrl-Down inside a textarea. So you can stretch the box without reaching for the mouse. How about that!
+function resize_textarea_up(field) {
+    var h = field.offsetHeight;
+    if (h > 120)
+        field.style.height = (h - 60) + "px";
+}
+function resize_textarea_down(field) {
+    field.style.height = (parseInt(field.offsetHeight) + 60) + "px";
+}
+interactive(
+    "resize-textarea-up",
+    "Resize a textarea to be smaller.",
+    function (I) { call_on_focused_field(I, resize_textarea_up); }
+);
+interactive(
+    "resize-textarea-down",
+    "Resize a textarea to be taller.",
+    function (I) { call_on_focused_field(I, resize_textarea_down); }
+);
+
+interactive("copy-current-url",
+            "Copy the current buffer's URL to the clipboard",
+            function(I) {
+                var text = I.window.buffers.current.document.location.href;
+                writeToClipboard(text);
+                I.window.minibuffer.message("Copied: " + text);
+            })
+

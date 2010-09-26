@@ -17,6 +17,7 @@ echo "Symlinked ~/.emacs.d to emacs-lisp"
 
 mkdir -p $HOME/.xmonad
 ln -sf "$INSTALL_LOCATION/xmonad.hs" /home/cosmin/.xmonad/
-echo "Installed xmonad.hs to ~/.xmonad/xmonad.hs"
+echo "Symlinked ~/.xmonad/xmonad.hs to xmonad.hs"
 
 ln -sf $INSTALL_LOCATION/xmobarrc ~/.xmobarrc
+echo "Symlinked ~/.conkerorrc to conkerorrc"
