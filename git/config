@@ -1,0 +1,23 @@
+[github]
+	user = cosmin
+	token = f3e8f32eb9f0c2256c6ee59396c277ea
+[user]
+	name = Cosmin Stejerean
+	email = cosmin@offbytwo.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+[merge]
+	tool = opendiff
+	summary = true
+[core]
+	excludesfile = /Users/cosmin/.gitignore
+[push]
+	default = tracking
+[log]
+	date = local
+[alias]
+	cv = cherry -v
+	st = status
