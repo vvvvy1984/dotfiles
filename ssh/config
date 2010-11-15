@@ -1,0 +1,5 @@
+Host *.amazonaws.com
+     User ubuntu
+     IdentityFile ~/.ec2/personal.pem
+
+
