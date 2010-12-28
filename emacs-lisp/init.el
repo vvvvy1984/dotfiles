@@ -148,3 +148,24 @@ point."
 ;; log4j mode
 (autoload 'log4j-mode "log4j-mode" "Major mode for viewing log files." t)
 (add-to-list 'auto-mode-alist '("\\.log\\'" . log4j-mode))
+
+;; PML for PragProg
+(add-to-list 'auto-mode-alist '("\\.pml$" . nxml-mode))
+
+;; color theme
+(require 'color-theme)
+
+(load-file "~/.emacs.d/color-theme-cosmin.el")
+
+(eval-after-load "color-theme"
+  (progn
+    (setq color-theme-is-global nil)
+    (when (window-system)
+       ; needed for the first frame
+      (color-theme-cosmin))))
+ 
+(add-hook 'after-make-frame-functions
+          '(lambda (f)
+             (with-selected-frame f
+               (if (window-system f)
+                   (color-theme-dark-cosmin)))))
