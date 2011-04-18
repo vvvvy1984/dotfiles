@@ -60,6 +60,31 @@ function git_update_externals {
     git submodule foreach update_this_remote
 }
 
+function gpg_encrypt_file {
+    password=${1?Usage: $0 <password> <file>}
+    file=${2?Usage: $0 <password> <file>}
+
+    echo $password | gpg --batch -q --passphrase-fd 0 --cipher-algo AES256 -c $file
+}
+
+function gpg_decrypt_file {
+    password=${1?Usage: $0 <password> <file>}
+    file=${2?Usage: $0 <password> <file>}
+
+    output=`echo $file | sed 's/\.gpg//g'`
+
+    echo $password | gpg --batch -q -o $output --passphrase-fd 0 --decrypt $file
+}
+
+
+function autocommit {
+    interval=${1?Usage: autocommit <seconds>}
+    while true; do
+        git commit -am "Autocommit: `date`"
+        sleep $interval
+    done
+}
+
 function defaultjdk {
     local vmdir=/System/Library/Frameworks/JavaVM.framework/Versions
     local ver=${1?Usage: defaultjdk <version>}
