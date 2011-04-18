@@ -168,4 +168,24 @@ point."
           '(lambda (f)
              (with-selected-frame f
                (if (window-system f)
-                   (color-theme-dark-cosmin)))))
+                   (color-theme-cosmin)))))
+
+(setq-default ispell-program-name "aspell")
+
+(defvar idle-timer nil)
+
+(defun real-auto-save (secs)
+  (setq idle-timer (run-with-idle-timer secs t save-buffer)))
+
+(defun cancel-auto-save ()
+  (cancel-timer idle-timer))
+
+;; Pymacs
+;; (autoload 'pymacs-apply "pymacs")
+;; (autoload 'pymacs-call "pymacs")
+;; (autoload 'pymacs-eval "pymacs" nil t)
+;; (autoload 'pymacs-exec "pymacs" nil t)
+;; (autoload 'pymacs-load "pymacs" nil t)
+
+;; (require 'pymacs)
+;; (pymacs-load "ropemacs" "rope-")
