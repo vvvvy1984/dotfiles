@@ -9,5 +9,5 @@ fi
 alias ll="ls -lh"
 alias la="ls -Ah"
 alias e="emacs -nw"
-alias ec="emacsclient"
+alias ec="emacsclient --no-wait"
 alias se="sudo -H emacs -nw"
