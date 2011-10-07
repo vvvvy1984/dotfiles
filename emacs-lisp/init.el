@@ -107,6 +107,12 @@
                        '(("\\.cu$" . c++-mode))
                        auto-mode-alist))
 
+;; puppet stuff
+(autoload 'puppet-mode "puppet-mode" 
+  "Major mode for editing puppet manifests")
+(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
+
+
 ;; show me the time
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
