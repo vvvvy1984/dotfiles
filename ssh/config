@@ -1,6 +1,9 @@
 Host *.amazonaws.com
      User ubuntu
      IdentityFile ~/.ec2/personal.pem
+     StrictHostKeyChecking no
+     UserKnownHostsFile /dev/null
+     LocalCommand sed -Eni bkp '/^%h/!p' ~/.ssh/known_hosts
 
 Host *
     ServerAliveInterval 600
