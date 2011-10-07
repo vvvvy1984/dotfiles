@@ -1,4 +1,12 @@
-export PS1="\[\033[01;34m\][\$(date +%H:%M)]\[\033[01;31m\]\$(__git_ps1) \[\033[01;32m\]\h:\[\033[01;34m\]\w$\[\033[0m\] "
+function git_ps1() {
+    local branch=$(__git_ps1 2>/dev/null)
+    if [ -n "$branch" ]; then
+        local ago=$(git log --pretty=format:'%ar' -1)
+        echo "$branch $ago"
+    fi
+}
+
+export PS1="\[\033[01;34m\][\$(date +%H:%M)]\[\033[01;31m\]\$(git_ps1) \[\033[01;32m\]\h:\[\033[01;34m\]\w$\[\033[0m\] "
 export EDITOR="emacs -nw"
 export PATH="~/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export PYTHONPATH="."
