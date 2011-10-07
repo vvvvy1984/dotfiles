@@ -158,6 +158,11 @@ point."
 ;; PML for PragProg
 (add-to-list 'auto-mode-alist '("\\.pml$" . nxml-mode))
 
+;; Textile mode
+(require 'textile-mode)
+(add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
+
+
 ;; color theme
 (require 'color-theme)
 
